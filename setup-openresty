@@ -114,7 +114,7 @@ http_lua_upstream=1
 http_headers_more=1
 http_array_var=1
 http_memc=1
-http_redis2=1
+http_ngx_http_redis2=1
 http_redis=1
 http_rds_json=1
 http_rds_csv=1
@@ -673,6 +673,12 @@ else
     OPENRESTY_INSTALL_NEEDED=1
   fi
 fi
+
+#Add Torden Module
+mkdir -p /src
+cd /src
+git clone https://github.com/torden/ngx_cache_purge.git
+openresty_modules="${openresty_modules} --add-module=/src/ngx_cache_purge"
 
 if test ${OPENRESTY_INSTALL_NEEDED} -eq 1 ; then
   OPENRESTY_LOGFILE=$(mktemp)
