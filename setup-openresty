@@ -812,7 +812,9 @@ mv /usr/sbin/nginx /usr/sbin/nginx.old
 
 cp $PREFIX/nginx/sbin/nginx /usr/sbin/nginx
 
-mv $PREFIX/nginx/conf /usr/local/openresty/nginx/conf.old
+mkdir -p $PREFIX/nginx/conf-old
+
+mv $PREFIX/nginx/conf $PREFIX/nginx/conf-old
 
 ln -s /etc/nginx/ $PREFIX/nginx/conf
 
